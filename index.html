@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saad chat App</title>
-    <script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script defer src="https://saadfirstchatapp.herokuapp.com/socket.io/socket.io.js"></script>
     <script defer src="js/client.js"></script>
     <link rel="stylesheet" href="css/style.css">
 
@@ -13,14 +13,20 @@
 <body>
     <nav>
         <img class="logo" src="logo.png" alt="">
-         <h1>Welsome to SaAd Chat App</h1>
+         <h1>Welcome to SaAd Chat App</h1>
     </nav>
     <div class="container">
             <!-- <div class="message right"></div> -->
             <!-- <div class="message left"></div> -->
         </div>
 <div class="send">
-<form action="POST" id="send-container">
+    <form action="POST" id="nameg">
+        <div class="input">
+        <input type="text" id="nameh" placeholder="Enter your name">
+        <button type="submit">Add Name</button>
+        </div>
+    </form>
+<form action="POST" id="send-container" style="display:none;">
     <div class="input">
         <input type="text" id="messageInp" placeholder="Type a message">
     </div>

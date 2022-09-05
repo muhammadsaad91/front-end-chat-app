@@ -1,7 +1,9 @@
-const socket = io('http://localhost:8000')
+const socket = io('https://saadfirstchatapp.herokuapp.com/')
 const form = document.getElementById('send-container')
 const messageInput = document.getElementById('messageInp')
 const messageContainer = document.querySelector(".container")
+const formName = document.getElementById('nameg')
+const name = document.getElementById('nameh').value
 
 
 const appent = (message, position) => {
@@ -12,30 +14,42 @@ const appent = (message, position) => {
     messageContainer.append(messageElement);
 }
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    const message = messageInput.value
-    appent(  ` You: ${message}`, 'right')
-    socket.emit('send-chat-message', message)
-    messageInput.value = ''
-} )
 
-const name = prompt("What's your name?")
-socket.emit('new-user', name)
 
-socket.on('user-connected', name => {
-    appent(`${name} Joined The Chat`, 'left')
-}
-)
+    formName.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('nameh').value
+        if(name == ""){
+            alert("Please enter a name")
+        }else{
+         socket.emit('new-user', name)
+            formName.style.display = 'none'
+            form.style.display = 'block'
+}    })
 
-socket.on('recieved', data => {
-    appent(`${data.name}: ${data.message}`, 'left')
-}
-)
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const message = messageInput.value
+        if(message == ""){
+            alert("Please enter a message")
+        }else{
+        appent(  ` You: ${message}`, 'right')
+        socket.emit('send-chat-message', message)
+        messageInput.value = ''
+    } })
+    
+    socket.on('user-connected', name => {
+        appent(`${name} Joined The Chat`, 'left')
+    }
+    )
+    
+    socket.on('recieved', data => {
+        appent(`${data.name}: ${data.message}`, 'left')
+    }
+    )
+    
+    socket.on('user-disconnected', name => {
+        appent(`${name} Leave the Chat`, 'right')
+    }
+    )
 
-socket.on('user-disconnected', name => {
-    appent(`${name} Leave the Chat`, 'right')
-}
-)
-
- 

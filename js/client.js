@@ -25,6 +25,7 @@ const appent = (message, position) => {
          socket.emit('new-user', name)
             formName.style.display = 'none'
             form.style.display = 'block'
+            messageContainer.style.display = 'block'
 }    })
 
     form.addEventListener('submit', (e) => {

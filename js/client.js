@@ -53,8 +53,10 @@ const appent = (message, position) => {
     )
     
     socket.on('user-disconnected', name => {
-        appent(`${name} Leave the Chat`, 'right')
+        if(name == null || name == ""){
+            // alert("Please enter a name")
+        }
+        else{
+        appent(`${name} Left The Chat`, 'left')
         audio.play()
-    }
-    )
-
+    } })

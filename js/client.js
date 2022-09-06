@@ -4,6 +4,7 @@ const messageInput = document.getElementById('messageInp')
 const messageContainer = document.querySelector(".container")
 const formName = document.getElementById('nameg')
 const name = document.getElementById('nameh').value
+const audio = new Audio('ting.mp3')
 
 
 const appent = (message, position) => {
@@ -12,6 +13,8 @@ const appent = (message, position) => {
     messageElement.classList.add(position) 
     messageElement.classList.add('message') 
     messageContainer.append(messageElement);
+    const messages = document.querySelector('#container');
+    messages.scrollTop = messages.scrollHeight;
 }
 
 
@@ -41,11 +44,13 @@ const appent = (message, position) => {
     
     socket.on('user-connected', name => {
         appent(`${name} Joined The Chat`, 'left')
+        audio.play()
     }
     )
     
     socket.on('recieved', data => {
         appent(`${data.name}: ${data.message}`, 'left')
+        audio.play()
     }
     )
     

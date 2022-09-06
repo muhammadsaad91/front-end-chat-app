@@ -5,19 +5,17 @@ const messageContainer = document.querySelector(".container")
 const formName = document.getElementById('nameg')
 const name = document.getElementById('nameh').value
 const audio = new Audio('ting.mp3')
-form.addEventListener(  )
+// form.addEventListener(  )
 
 const appent = (message, position) => {
     const messageElement = document.createElement('div')
-    messageElement.innerText = message ;
+    messageElement.innerText = message;
     messageElement.classList.add(position) 
     messageElement.classList.add('message') 
     messageContainer.append(messageElement);
     const messages = document.querySelector('#container');
     messages.scrollTop = messages.scrollHeight;
 }
-
-
 
     formName.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -56,6 +54,7 @@ const appent = (message, position) => {
     
     socket.on('user-disconnected', name => {
         appent(`${name} Leave the Chat`, 'right')
+        audio.play()
     }
     )
 

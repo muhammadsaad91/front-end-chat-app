@@ -5,7 +5,7 @@ const messageContainer = document.querySelector(".container")
 const formName = document.getElementById('nameg')
 const name = document.getElementById('nameh').value
 const audio = new Audio('ting.mp3')
-
+form.addEventListener(  )
 
 const appent = (message, position) => {
     const messageElement = document.createElement('div')

@@ -104,6 +104,15 @@ button:hover{
         width: 100%;
         padding: 1rem;
     }
+    .left{
+        width: 50%;
+        /* text-align: center; */
+    }
+    .right{
+        width: 50%;
+        /* text-align: center; */
+    }
+
     button{
         width: 20%;
     }
